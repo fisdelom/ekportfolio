@@ -3,7 +3,17 @@ import { motion } from 'framer-motion'
 import { Card, CardContent } from './ui/card'
 
 export default function EducationCards() {
-  const education = [
+  const education = [  
+    {
+      school: "PECB",
+      degree: "Certified: ISO 42001 Lead Implementer",
+      details: "August 2024"
+    },
+    {
+      school: "Microsoft",
+      degree: "Certified: Azure AI Fundamentals",
+      details: "June 2024"
+    },
     {
       school: "National School of Applied Sciences (ENSA)",
       degree: "Engineering Degree in Computer Science",

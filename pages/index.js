@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Button } from '../components/ui/button'
-import { Card, CardContent } from '../components/ui/card'
-import { ChevronDownIcon, CodeIcon, BriefcaseIcon, GraduationCapIcon, AwardIcon, UserIcon } from 'lucide-react'
+import { ChevronDownIcon, CodeIcon, BriefcaseIcon, GraduationCapIcon, AwardIcon } from 'lucide-react'
 import Section from '@/components/Section'
 import ExperienceTimeline from '@/components/ExperienceTimeline'
 import SkillsShowcase from '@/components/SkillsShowcase'
@@ -17,7 +16,7 @@ export default function EnhancedPortfolio() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'experience', 'skills', 'education', 'achievements']
+      const sections = ['hero', 'experience', 'skills', 'education', 'achievements', 'get-in-touch']
       const currentSection = sections.find(section => {
         const element = document.getElementById(section)
         if (element) {
@@ -38,7 +37,7 @@ export default function EnhancedPortfolio() {
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 text-white overflow-x-hidden font-['Poppins',sans-serif]">
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-lg">
         <ul className="flex justify-center space-x-4 p-4">
-          {['Experience', 'Skills', 'Education', 'Achievements'].map((item) => (
+          {['Experience', 'Skills', 'Education', 'Achievements', 'Get in Touch'].map((item) => (
             <li key={item}>
               <Button
                 variant="ghost"
@@ -49,7 +48,10 @@ export default function EnhancedPortfolio() {
                   hover:text-pink-500 hover:bg-pink-500/10
                   focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50
                 `}
-                onClick={() => document.getElementById(item.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => {
+                  const sectionId = item.toLowerCase().replace(' ', '-');
+                  document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+                }}
               >
                 <span className="relative z-10">{item}</span>
                 <span className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 opacity-0 hover:opacity-20 transition-opacity duration-300"></span>
@@ -106,6 +108,16 @@ export default function EnhancedPortfolio() {
 
       <Section id="achievements" icon={AwardIcon} title="Key Achievements">
         <AchievementsList />
+      </Section>
+
+      <Section id="get-in-touch" title="Get in Touch">
+        <div className="text-center">
+          <h3 className="text-2xl font-semibold mb-4">Contact Me</h3>
+          <p className="text-gray-300 mb-4">Feel free to reach out via email:</p>
+          <a href="mailto:ek@elikudjie.com" className="text-pink-500 underline">
+            ek@elikudjie.com
+          </a>
+        </div>
       </Section>
     </div>
   )
