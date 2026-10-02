@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://elikudjie.com/sitemap.xml
